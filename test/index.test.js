@@ -1,7 +1,7 @@
 var assert = require('assert');
 var restler = require('restler');
 
-var LOG = true;
+var LOG = false;
 
 function log(str){
   if (LOG === true) {
