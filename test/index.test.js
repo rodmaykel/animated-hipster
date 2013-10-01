@@ -1,5 +1,7 @@
 var assert = require('assert');
-var restler = require('restler');
+var should = require('should');
+var supertest = require('supertest');
+var app = require('../app');
 
 var LOG = false;
 
@@ -27,9 +29,21 @@ describe('Index', function(){
     }) // before
     
     
-    it('index should response success:1', function(done){
+    it('index dummy test', function(done){
       
       done();
+    }) // it
+
+    it('index should response success:1', function(done){
+      supertest(app)
+        .get('/')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res){
+          if (err) return done(err);
+          should.equal(res.body.success, 1);
+          done();
+        });
     }) // it
     
     
@@ -40,3 +54,5 @@ describe('Index', function(){
 
   }); // describe
 });
+
+
