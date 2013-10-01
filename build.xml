@@ -27,6 +27,7 @@
 		<echo message="Running the tests ..." />
 		<exec executable="mocha"  output="build/testResults/mocha.xml" failonerror="true">
 			<env key="NODE_PATH" value="/tmp/node_modules/" />
+			<env key="NODE_ENV" value="test" />
 			<arg value="--reporter" />
 			<arg value="xunit" />
 		</exec>
