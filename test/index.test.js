@@ -41,7 +41,7 @@ describe('Index', function(){
         .expect('Content-Type', /json/)
         .end(function(err, res){
           if (err) return done(err);
-          should.equal(res.body.success, 1);
+          should.equal(res.body.success, 0);
           done();
         });
     }) // it
