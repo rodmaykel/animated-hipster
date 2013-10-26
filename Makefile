@@ -1,7 +1,7 @@
 MOCHA_OPTS= --check-leaks
 REPORTER = xunit
 
-test: run test-unit
+test: clean init run test-unit
 
 init: 
 	mkdir build
