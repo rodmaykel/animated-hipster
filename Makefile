@@ -1,18 +1,19 @@
 MOCHA_OPTS= --check-leaks
 REPORTER = xunit
 
-test: clean init run test-unit
+test: clean run test-unit
 
 init: 
 	mkdir build
 	mkdir build/testResults
 
-run:
+run: init
 	@NODE_PATH=/tmp/node_modules/ npm install
 
 test-unit:
-	@NODE_ENV=test mocha \
-		@NODE_PATH=/tmp/node_modules/ \
+	@NODE_PATH=/tmp/node_modules/ \
+		NODE_ENV=test \
+		mocha \
 		--reporter $(REPORTER) \
 		$(MOCHA_OPTS) > build/testResults/mocha.xml
 	echo "Test complete..."
